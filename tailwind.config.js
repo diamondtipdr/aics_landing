@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },
