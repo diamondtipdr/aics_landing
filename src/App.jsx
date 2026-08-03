@@ -1,8 +1,8 @@
 // ============================================================
 // App.jsx — Landing page "Auditan.do" (Hub central)
-// Conecta los ecosistemas de diagnóstico (sa.auditan.do),
-// formación (academia.auditan.do) y consultoría
-// (auditoriainteligente.com).
+// Estrategia híbrida: "Gancho Oscuro / Contenido Claro"
+// Conecta diagnóstico (sa.auditan.do), formación
+// (academia.auditan.do) y consultoría (auditoriainteligente.com).
 // ============================================================
 
 import { useEffect, useState } from 'react'
@@ -12,30 +12,30 @@ const DIAGNOSTICO_URL = 'https://sa.auditan.do'
 const ACADEMIA_LOGIN_URL = 'https://academia.auditan.do/login'
 const ACADEMIA_URL = 'https://academia.auditan.do'
 const FIRMA_URL = 'https://www.auditoriainteligente.com'
+const FIRMA_NOSOTROS_URL = 'https://www.auditoriainteligente.com/nosotros'
 const WORDPRESS_API =
   'https://www.auditoriainteligente.com/wp-json/wp/v2/posts?per_page=3&_embed'
 
 /**
- * 1. Navegación Superior — fondo oscuro (slate-900)
+ * 1. Navegación Superior — Modo Oscuro (slate-900)
  */
 function Navigation() {
   return (
     <header className="bg-slate-900">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        {/* Logo / Nombre */}
-        <a href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-teal-400 font-montserrat text-lg font-bold text-white">
-            A
-          </span>
-          <span className="font-montserrat text-xl font-bold tracking-tight text-white">
-            Academia AICS
-          </span>
+        {/* Logo */}
+        <a href="/" className="flex items-center">
+          <img
+            src="/logo-academia-light-color.png"
+            alt="Academia AICS"
+            className="h-10 w-auto"
+          />
         </a>
 
         {/* Enlaces + CTA */}
         <div className="flex items-center gap-6">
           <a
-            href={FIRMA_URL}
+            href={FIRMA_NOSOTROS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden text-sm font-medium text-slate-300 transition-colors hover:text-white sm:block"
@@ -55,25 +55,25 @@ function Navigation() {
 }
 
 /**
- * 2. Hero Section — mandato normativo + CTA al diagnóstico
+ * 2. Hero Section — Modo Oscuro (Gancho)
  */
 function Hero() {
   return (
-    <section className="bg-slate-50">
+    <section className="bg-slate-900">
       <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
         {/* Badge */}
-        <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-800">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+        <span className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-teal-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
           Lo que exigen las nuevas Normas Globales
         </span>
 
         {/* Titular */}
-        <h1 className="mx-auto mt-8 max-w-4xl font-montserrat text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+        <h1 className="mx-auto mt-8 max-w-4xl font-montserrat text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
           El aseguramiento moderno exige agilidad y datos, no solo cumplimiento.
         </h1>
 
-        {/* Párrafo que normaliza el uso de tecnología */}
-        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-600">
+        {/* Párrafo que baja las barreras tecnológicas */}
+        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-slate-300">
           Entendemos que transformar un departamento de auditoría tradicional
           parece una tarea monumental. Nosotros en la profesión solemos
           complicar lo que debería ser ágil. ¿Cómo iniciamos la transformación?
@@ -95,7 +95,7 @@ function Hero() {
 }
 
 /**
- * 3. Puente hacia la Academia — del diagnóstico a la ejecución
+ * 3. Puente hacia la Academia — Modo Claro (bg-slate-50)
  */
 function Academia() {
   const beneficios = [
@@ -117,7 +117,7 @@ function Academia() {
   ]
 
   return (
-    <section className="bg-white">
+    <section className="bg-slate-50">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
@@ -126,7 +126,7 @@ function Academia() {
           <h2 className="mt-3 font-montserrat text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             Pase del diagnóstico a la ejecución en la Academia AICS
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-slate-600">
+          <p className="mt-4 text-lg leading-relaxed text-slate-800">
             Una vez que sabes dónde estás, el siguiente paso es avanzar. La
             Academia AICS te acompaña de la medición a la ejecución con
             contenido práctico y orientado a resultados.
@@ -137,13 +137,13 @@ function Academia() {
           {beneficios.map((beneficio) => (
             <div
               key={beneficio.titulo}
-              className="rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
             >
               <span className="block h-10 w-10 rounded-lg bg-gradient-to-br from-blue-500 to-teal-400" />
               <h3 className="mt-6 font-montserrat text-xl font-bold text-slate-900">
                 {beneficio.titulo}
               </h3>
-              <p className="mt-3 leading-relaxed text-slate-600">
+              <p className="mt-3 leading-relaxed text-slate-800">
                 {beneficio.descripcion}
               </p>
             </div>
@@ -164,7 +164,7 @@ function Academia() {
 }
 
 /**
- * 4. Insights de Auditoría Inteligente — artículos recientes (WordPress)
+ * 4. Insights de Auditoría Inteligente — Modo Claro (bg-white)
  */
 function Insights() {
   const [posts, setPosts] = useState([])
@@ -203,7 +203,7 @@ function Insights() {
       .trim()
 
   return (
-    <section className="bg-slate-50">
+    <section className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-teal-600">
@@ -212,7 +212,7 @@ function Insights() {
           <h2 className="mt-3 font-montserrat text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             Insights de Auditoría Inteligente
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-slate-600">
+          <p className="mt-4 text-lg leading-relaxed text-slate-800">
             Artículos y perspectivas de la firma consultora para mantenerte al
             día en aseguramiento moderno.
           </p>
@@ -224,7 +224,7 @@ function Insights() {
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="animate-pulse rounded-2xl border border-slate-200 bg-white p-8"
+                className="animate-pulse rounded-2xl border border-slate-200 bg-slate-50 p-8"
               >
                 <div className="h-4 w-3/4 rounded bg-slate-200" />
                 <div className="mt-4 h-3 w-full rounded bg-slate-200" />
@@ -237,8 +237,8 @@ function Insights() {
 
         {/* Estado de error */}
         {!loading && error && (
-          <div className="mt-14 rounded-2xl border border-slate-200 bg-white p-10 text-center">
-            <p className="text-slate-600">{error}</p>
+          <div className="mt-14 rounded-2xl border border-slate-200 bg-slate-50 p-10 text-center">
+            <p className="text-slate-800">{error}</p>
             <a
               href={FIRMA_URL}
               target="_blank"
@@ -256,13 +256,13 @@ function Insights() {
             {posts.map((post) => (
               <article
                 key={post.id}
-                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
+                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-md"
               >
                 <h3
                   className="font-montserrat text-lg font-bold leading-snug text-slate-900"
                   dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                 />
-                <p className="mt-3 flex-1 leading-relaxed text-slate-600">
+                <p className="mt-3 flex-1 leading-relaxed text-slate-800">
                   {cleanExcerpt(post.excerpt.rendered)}
                 </p>
                 <a
@@ -283,7 +283,7 @@ function Insights() {
 }
 
 /**
- * 5. Pie de Página — enlaces a la matriz
+ * 5. Pie de Página — Modo Oscuro (slate-900)
  */
 function Footer() {
   return (
@@ -296,18 +296,18 @@ function Footer() {
           </p>
           <div className="flex items-center gap-6 text-sm text-slate-300">
             <a
-              href={FIRMA_URL}
+              href={FIRMA_NOSOTROS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-white"
             >
-              Firma Consultora
+              Sobre Nosotros
             </a>
             <a
-              href={ACADEMIA_URL}
+              href={ACADEMIA_LOGIN_URL}
               className="transition-colors hover:text-white"
             >
-              Academia AICS
+              Acceso a la Academia
             </a>
             <a
               href={DIAGNOSTICO_URL}
